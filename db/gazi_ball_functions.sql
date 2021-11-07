@@ -27,5 +27,7 @@
     JOIN    teams away_team
     ON      m.away_id = away_team.id
     JOIN    stadiums s
-    ON      m.stadium_id = s.id;  
+    ON      m.stadium_id = s.id;
 
+--league_repository - display leagues
+SELECT * FROM leagues;
