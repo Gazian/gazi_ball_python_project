@@ -1,3 +1,4 @@
+--check that teams, stadium and league are valid
     SELECT  t.team_name,
             s.stadium_name,
             s.city,
@@ -7,7 +8,7 @@
     ON      t.league_id = l.id
     JOIN    stadiums s
     ON      t.stadium_id = s.id;
-
+--check that matches view - with teams, stadium and league are valid
     SELECT  m.season,
             m.match_week,
             m.match_date,
