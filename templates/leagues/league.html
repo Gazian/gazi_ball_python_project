@@ -5,7 +5,7 @@
 <div>
     <hr>
     {% for league in all_leagues %}
-    <p id="country-list">{{league.country}} <li id="league-list"><a href="/index/{{league.name}}">{{league.name}}</a></li></p>
+    <p id="country-list">{{league.country}} <li id="league-list"><a href="/index/leagues/{{league.name}}">{{league.name}}</a></li></p>
     {% endfor %}
 </div>
 

@@ -2,9 +2,10 @@ from db.run_sql import run_sql
 
 from models.league import League
 from models.team import Team
-from models.stadium import Stadium
+import repositories.team_repository as team_repository
+import repositories.stadium_repository as stadium_repository
 
-def display_leagues():
+def select_all():
     leagues = []
 
     sql = "SELECT * FROM leagues"
@@ -15,14 +16,26 @@ def display_leagues():
         leagues.append(league)
     return leagues
 
-def display_teams_by_league_serie_a():
+def select(id):
+    league = None
+    sql = "SELECT * FROM leagues WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        league = League(result['league_name'],result['country'],result['id'])
+    return league
+
+def all_teams_from_league(league):
     teams = []
 
-    sql = "SELECT t.team_name, s.stadium_name, s.capacity FROM teams t JOIN leagues l ON t.league_id = l.id JOIN stadiums s ON t.stadium_id = s.id WHERE l.league_id = 1"
-    results = run_sql(sql)
+    sql = "SELECT * FROM teams WHERE league_id = %s"
+    values = [league.id]
+    results = run_sql(sql, values)
 
     for row in results:
-        team = Team(row['team_name']),Stadium(row['stadium_name'],row['capacity'])
+        stadium = stadium_repository.select(row['stadium_id'])
+        team = Team(row['team_name'],league,stadium,row['relegated'],row['id'])
         teams.append(team)
     return teams
 
