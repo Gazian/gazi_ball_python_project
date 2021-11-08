@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <title>Leagues</title>
+  <title>Gazi-Ball</title>
 </head>
 <body>
-  <header>
+  <header id="website-banner">
+    GAZIBALL
+  </header>
+  <div id = "index-page-menu">
     <nav>
       <ul class="menu">
-        <li><a href="/">Home</a></li>
-        <li><a href="/leagues">Leagues</a></li>
+        <li><a href="/index/leagues">Leagues</a></li>
+        <li><a href="/index/teams">Teams</a></li>
+        <li><a href="/index/results">Results</a></li>
+        <li><a href="/index/fixtures">Fixtures</a></li>
       </ul>
     </nav>
-  </header>
-  <div class="container">
-    {% block content %}
-    {% endblock %}
   </div>
 </body>
 </html>

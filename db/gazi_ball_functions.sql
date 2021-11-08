@@ -15,8 +15,8 @@
             m.match_time,
             l.league_name,
             s.stadium_name,
-            home_team.team_name,
-            away_team.team_name,
+            home_team.team_name home,
+            away_team.team_name away,
             m.home_score,
             m.away_score
     FROM    matches m         
@@ -29,5 +29,13 @@
     JOIN    stadiums s
     ON      m.stadium_id = s.id;
 
---league_repository - display leagues
-SELECT * FROM leagues;
+--league_repository - access leagues
+SELECT      t.team_name,
+            s.stadium_name,
+            s.capacity
+FROM        teams t
+JOIN        leagues l
+ON          t.league_id = l.id
+JOIN        stadiums s
+ON          t.stadium_id = s.id
+WHERE       l.league_name = 'Serie A';

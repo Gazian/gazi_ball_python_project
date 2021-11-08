@@ -5,35 +5,35 @@ DROP TABLE IF EXISTS stadiums;
 
 CREATE TABLE leagues (
   id SERIAL PRIMARY KEY,
-  league_name VARCHAR(255),
-  country VARCHAR(255)
+  league_name VARCHAR(255) NOT NULL,
+  country VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE stadiums (
   id SERIAL PRIMARY KEY,
-  stadium_name VARCHAR(255),
-  city VARCHAR(255),
-  capacity INT
+  stadium_name VARCHAR(255) NOT NULL,
+  city VARCHAR(255) NOT NULL,
+  capacity INT NOT NULL
 );
 
 CREATE TABLE teams (
   id SERIAL PRIMARY KEY,
-  team_name VARCHAR(255),
-  league_id INT REFERENCES leagues(id),
-  stadium_id INT REFERENCES stadiums(id),
-  relegated BOOLEAN
+  team_name VARCHAR(255) NOT NULL,
+  league_id INT NOT NULL REFERENCES leagues(id),
+  stadium_id INT NOT NULL REFERENCES stadiums(id),
+  relegated BOOLEAN DEFAULT False
 );
 
 CREATE TABLE matches (
     id SERIAL PRIMARY KEY,
     season VARCHAR(255),
-    match_week INT,
-    match_date DATE,
-    match_time TIME,
-    league_id INT REFERENCES leagues(id),
-    stadium_id INT REFERENCES stadiums(id),
-    home_id INT REFERENCES teams(id),
-    away_id INT REFERENCES teams(id),
+    match_week INT NOT NULL,
+    match_date DATE NOT NULL,
+    match_time TIME NOT NULL,
+    league_id INT NOT NULL REFERENCES leagues(id),
+    stadium_id INT NOT NULL REFERENCES stadiums(id),
+    home_id INT NOT NULL REFERENCES teams(id),
+    away_id INT NOT NULL REFERENCES teams(id),
     home_score INT,
     away_score INT,
     home_result INT,
