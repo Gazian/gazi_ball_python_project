@@ -38,16 +38,21 @@ def delete_league(id):
     values = [id]
     run_sql(sql, values)
 
-def all_teams_from_league(league):
+def update(league):
+    sql = "UPDATE leagues SET(league_name,country) = (%s,%s) WHERE id = %s"
+    values = [league.name, league.country, league.id]
+    run_sql(sql,values)
+
+def all_teams_from_league(id):
     teams = []
 
     sql = "SELECT * FROM teams WHERE league_id = %s"
-    values = [league.id]
+    values = [id]
     results = run_sql(sql, values)
 
     for row in results:
         stadium = stadium_repository.select(row['stadium_id'])
-        team = Team(row['team_name'],league,stadium,row['relegated'],row['id'])
+        team = Team(row['team_name'],stadium,row['relegated'],row['id'])
         teams.append(team)
     return teams
 

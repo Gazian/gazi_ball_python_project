@@ -17,7 +17,7 @@ teams = team_repository.select_all()
 for team in teams:
     print (team.name,team.stadium.name)
 
-
+print (league_repository.select(1).name)
 # league = League('Serie A','Italy')
 # teams = team_repository.select_all_teams_by_league(league)
 # for team in teams:

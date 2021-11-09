@@ -6,7 +6,7 @@
     <h3>Teams</h3>
     <hr>
     {% for team in all_teams %}
-    <p id="team-information"> <li id="team-list"><a href="/index/{{league.team.team_name}}">{{league.team.team_name}}</a></li></p>
+    <p id="team-information"> <li id="team-list"><a href="/index/leagues/{{ league.name }}{{ team.team_name }}">{{ team.team_name }}</a></li></p>
     {% endfor %}
 </div>
 

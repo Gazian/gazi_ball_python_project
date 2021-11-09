@@ -1,0 +1,28 @@
+{% extends "leagues/base.html" %}
+
+{% block content %}
+<nav>
+    <ul>
+        <li class="non-base-navs"><a href="/index/leagues">League List</a></li>
+        <li class="non-base-navs"><a href="/index/leagues/create">Create League</a></li>
+    </ul>
+</nav>
+
+<form action="/index/leagues/{{league.id}}" method="post">
+
+    <div>
+        <label for="name">League</label>
+        <input type="text" id="name" name="name" 
+        placeholder="{{league.name}}" required autofocus>
+      </div>
+
+      <div>
+        <label for="country">Country</label>
+        <input type="text" id="country" name="country" 
+        placeholder="{{league.country}}" required autofocus>
+      </div>
+      <button type="submit">Edit League</button>
+
+</form>
+
+{% endblock %}

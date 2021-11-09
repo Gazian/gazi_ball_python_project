@@ -3,15 +3,16 @@
 {% block content %}
 <nav>
     <ul>
-        <li class="non-base-navs"><a href="/index/leagues/new">New League</a></li>
+        <li class="non-base-navs"><a href="/index/leagues/create">Create League</a></li>
     </ul>
 </nav>
 <div>
     <hr>
     {% for league in all_leagues %}
     <p id="country-list">
+        League:   <a href="/index/leagues/{{league.id}}">{{league.name}}</a><br>
         Country : {{league.country}} <br>
-        League:   {{league.name}}</p>
+    </p>
         <div>
             <form action="/index/leagues/{{league.id}}/delete" method="POST"> 
                 <button class="trash-button">Delete</button> 

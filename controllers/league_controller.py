@@ -19,9 +19,9 @@ def leagues():
     leagues = league_repository.select_all()
     return render_template("/leagues/list.html",all_leagues=leagues)
 
-@leagues_blueprint.route("/index/leagues/new",methods = ['GET'])
+@leagues_blueprint.route("/index/leagues/create",methods = ['GET'])
 def new_league():
-    return render_template("/leagues/new.html")
+    return render_template("/leagues/create.html")
 
 @leagues_blueprint.route("/index/leagues",methods = ['POST'])
 def create_league():
@@ -36,9 +36,23 @@ def delete_league(id):
     league_repository.delete_league(id)
     return redirect('/index/leagues') 
 
+@leagues_blueprint.route("/index/leagues/<id>", methods=['GET'])
+def show_league(id):
+    league = league_repository.select(id)
+    return render_template('leagues/show.html',league=league)
 
+@leagues_blueprint.route("/index/leagues/<id>/edit", methods=['GET'])
+def edit_league(id):
+    league = league_repository.select(id)
+    return render_template('leagues/edit.html', league = league)
 
-
+@leagues_blueprint.route("/index/leagues/<id>",methods = ['POST'])
+def update_league(id):
+    name = request.form['name']
+    country = request.form['country']
+    league = League(name,country,id)
+    league_repository.update(league)
+    return redirect('/index/leagues')
 
 # @leagues_blueprint.route("/index/leagues/<league>")
 # def teams(league):

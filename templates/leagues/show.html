@@ -1,0 +1,25 @@
+{% extends "leagues/base.html" %}
+
+{% block content %}
+<nav>
+    <ul>
+        <li class="non-base-navs"><a href="/index/leagues">League List</a></li>
+        <li class="non-base-navs"><a href="/index/leagues/create">Create League</a></li>
+    </ul>
+</nav>
+    <hr>
+    <p id="country-list">
+        League:   {{league.name}}<br>
+        Country : {{league.country}} <br>
+    </p>
+    <p><button class="edit-button"><a href="/index/leagues/{{league.id}}/edit">Edit</a></button></p>
+
+
+ 
+
+
+
+
+
+
+{% endblock %}
