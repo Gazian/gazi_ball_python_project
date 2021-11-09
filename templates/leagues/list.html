@@ -12,15 +12,17 @@
     <p id="country-list">
         Country : {{league.country}} <br>
         League:   {{league.name}}</p>
+        <div>
+            <form action="/index/leagues/{{league.id}}/delete" method="POST"> 
+                <button class="trash-button">Delete</button> 
+              </form>
+        </div>
+
     {% endfor %}
 </div>
-<p>
-    <form action="/index/leagues/{{league.id}}/delete" method="POST"> 
-        <button class="trash-button"></button> 
-      </form>
-</p>
 
-</div>
+
+
 
 
 
