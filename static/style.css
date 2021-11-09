@@ -12,12 +12,32 @@
     color: white;
   }
 
+  .non-base-navs{
+    list-style-type: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color:black ;
+  }
+
 
   .menu {
     list-style-type: none;
   }
+  .p li a{
+    list-style-type: none;
+  }
 
-  #league-list{
+  .league-list{
+
+    list-style-type: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color:black ;
+  }
+
+  .team-list{
     list-style-type: none;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 18px;
@@ -39,7 +59,7 @@
   .menu li a{
     list-style-type: none;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 500;
     color:black ;
   }

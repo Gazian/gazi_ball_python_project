@@ -1,0 +1,27 @@
+{% extends "leagues/base.html" %}
+
+{% block content %}
+<nav>
+    <ul>
+        <li class="non-base-navs"><a href="/index/leagues/new">New League</a></li>
+    </ul>
+</nav>
+<div>
+    <hr>
+    {% for league in all_leagues %}
+    <p id="country-list">
+        Country : {{league.country}} <br>
+        League:   {{league.name}}</p>
+    {% endfor %}
+</div>
+<p>
+    <form action="/index/leagues/{{league.id}}/delete" method="POST"> 
+        <button class="trash-button"></button> 
+      </form>
+</p>
+
+</div>
+
+
+
+{% endblock %}

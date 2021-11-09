@@ -9,7 +9,7 @@ import repositories.league_repository as league_repository
 def select_all():
     teams = []
 
-    sql = "SELECT * FROM teams ORDER BY team_name ASC"
+    sql = "SELECT * FROM teams ORDER BY  league_id, team_name ASC"
     results = run_sql(sql)
 
     for row in results:
@@ -23,7 +23,7 @@ def select_all_teams_by_league(league):
     teams = []
     league = league_repository.select(league.id)
 
-    sql = "SELECT * FROM teams WHERE league_id = %s ORDER BY team_name ASC"
+    sql = "SELECT * FROM teams WHERE league_id = %s ORDER BY league_id, team_name ASC"
     value = league
     results = run_sql(sql,value)
 

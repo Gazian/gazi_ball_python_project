@@ -26,6 +26,18 @@ def select(id):
         league = League(result['league_name'],result['country'],result['id'])
     return league
 
+def save(league):
+    sql = "INSERT INTO leagues(league_name,country) VALUES (%s,%s) RETURNING id"
+    values = [league.name, league.country]
+    results = run_sql (sql,values)
+    league.id = results[0]['id']
+    return league
+
+def delete_league(id):
+    sql = "DELETE FROM leagues WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
 def all_teams_from_league(league):
     teams = []
 
