@@ -9,7 +9,8 @@
 <div>
     <hr>
     {% for stadium in all_stadiums %}
-    <p id="country-list">
+    <p>
+        <li class="team-list">
         Stadium:   <a href="/index/stadium/{{stadium.id}}">{{stadium.name}}</a><br>
         City : {{stadium.city}} <br>
         Capacity : {{stadium.capacity}} <br>

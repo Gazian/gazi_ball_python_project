@@ -1,8 +1,9 @@
 #website-banner{
-    padding: 10px;
+    padding: 30px;
     background-color: rgb(125, 13, 216);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 36px;
     color: white;
+    font-size: 30px
   }
 
   #leagues-banner{
@@ -10,6 +11,7 @@
     background-color: rgb(125, 13, 216);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 36px;
     color: white;
+    font-size: 30px
   }
 
   #stadium-banner{
@@ -17,6 +19,7 @@
     background-color: rgb(125, 13, 216);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 36px;
     color: white;
+    font-size: 30px
   }
 
   #teams-banner{
@@ -24,6 +27,15 @@
     background-color: rgb(125, 13, 216);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 36px;
     color: white;
+    font-size: 30px
+  }
+
+  #matches-banner{
+    padding: 10px;
+    background-color: rgb(125, 13, 216);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 36px;
+    color: white;
+    font-size: 30px
   }
 
   .non-base-navs{
@@ -42,32 +54,30 @@
     list-style-type: none;
   }
 
-  .league-list{
-
-    list-style-type: none;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 18px;
-    font-weight: 500;
-    color:black ;
-  }
 
   .team-list{
     list-style-type: none;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     color:black ;
   }
 
-  #country-list{
+
+  .match-list{
     list-style-type: none;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     color:black ;
+    width: 80%;
+    text-align: left;
   }
 
-
+  .table-header{
+    background-color: rgb(125, 13, 216);
+    color: white;
+  }
 
 
   .menu li a{
@@ -77,3 +87,5 @@
     font-weight: 500;
     color:black ;
   }
+
+  

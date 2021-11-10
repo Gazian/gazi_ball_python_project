@@ -9,7 +9,8 @@
 <div>
     <hr>
     {% for league in all_leagues %}
-    <p id="country-list">
+    <p>
+        <li class= "team-list">
         League:   <a href="/index/leagues/{{league.id}}">{{league.name}}</a><br>
         Country : {{league.country}} <br>
     </p>
