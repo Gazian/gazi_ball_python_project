@@ -1,0 +1,27 @@
+{% extends "teams/base.html" %}
+
+{% block content %}
+<ul>
+    <li class="non-base-navs"><a href="/index/teams/create">Create Team</a></li>
+</ul>
+<div>
+    <hr>
+    {% for team in all_teams %}
+    <p>
+         <li class="team-list">
+             <a href="/index/teams/{{team.id}}">{{team.name}}</a><br>
+            League: {{team.league.name}} <br>
+            Stadium: {{ team.stadium.name}} <br>
+            City: {{team.stadium.city}} <br>
+        </li>
+    </p>
+    <div>
+        <form action="/index/teams/{{team.id}}/delete" method="POST"> 
+            <button class="trash-button">Delete</button> 
+          </form>
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -12,6 +12,20 @@
     color: white;
   }
 
+  #stadium-banner{
+    padding: 10px;
+    background-color: rgb(125, 13, 216);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 36px;
+    color: white;
+  }
+
+  #teams-banner{
+    padding: 10px;
+    background-color: rgb(125, 13, 216);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 36px;
+    color: white;
+  }
+
   .non-base-navs{
     list-style-type: none;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

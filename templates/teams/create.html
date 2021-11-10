@@ -1,0 +1,42 @@
+{% extends "teams/base.html" %}
+
+{% block content %}
+<nav>
+    <ul>
+        <li class="non-base-navs"><a href="/index/teams">Team List</a></li>
+    </ul>
+</nav>
+
+<form action="/index/teams" method="post">
+<h5>
+Please ensure League & Stadium are present prior to creating new Team
+</h5>
+
+
+  <div>
+    <label for="name">Team</label>
+    <input type="text" id="name" name="name" 
+    placeholder="{{team.name}}" required autofocus>
+  </div>
+
+  <div>
+    <label for="league">League</label>
+    <select id="league" name = "league_id">
+      {% for league in all_leagues %} 
+      <option value="{{ league.id }}">{{ league.name }}</option> 
+      {% endfor %} 
+    </select>
+  </div>
+
+  <div>
+   <label for="stadium">Stadium</label>
+    <select id="stadium" name = "stadium_id">
+      {% for stadium in all_stadiums %} 
+      <option value="{{ stadium.id }}">{{ stadium.name }}</option> 
+      {% endfor %} 
+    </select>
+  </div>
+  <button type="submit">Add Team</button>
+</form>
+
+{% endblock %}

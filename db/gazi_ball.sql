@@ -20,7 +20,7 @@ CREATE TABLE teams (
   id SERIAL PRIMARY KEY,
   team_name VARCHAR(255) NOT NULL,
   league_id INT NOT NULL REFERENCES leagues(id),
-  stadium_id INT NOT NULL REFERENCES stadiums(id),
+  stadium_id INT REFERENCES stadiums(id),
   relegated BOOLEAN DEFAULT False
 );
 

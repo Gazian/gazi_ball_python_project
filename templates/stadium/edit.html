@@ -1,0 +1,35 @@
+{% extends "leagues/base.html" %}
+
+{% block content %}
+<nav>
+    <ul>
+        <li class="non-base-navs"><a href="/index/stadium">Stadium List</a></li>
+        <li class="non-base-navs"><a href="/index/stadium/create">Create Stadium</a></li>
+    </ul>
+</nav>
+
+<form action="/index/stadium/{{stadium.id}}" method="post">
+
+    <div>
+        <label for="name">Stadium</label>
+        <input type="text" id="name" name="name" 
+        placeholder="{{stadium.name}}" required autofocus>
+      </div>
+
+      <div>
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" 
+        placeholder="{{stadium.city}}" required autofocus>
+      </div>
+
+      <div>
+        <label for="capacity">Capacity</label>
+        <input type="number" id="capacity" name="capacity" 
+        placeholder="{{stadium.capacity}}" required autofocus>
+      </div>
+
+      <button type="submit">Edit Stadium</button>
+
+</form>
+
+{% endblock %}

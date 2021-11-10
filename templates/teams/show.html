@@ -1,0 +1,28 @@
+{% extends "teams/base.html" %}
+
+{% block content %}
+<nav>
+    <ul>
+        <li class="non-base-navs"><a href="/index/teams">Team List</a></li>
+        <li class="non-base-navs"><a href="/index/teams/create">Create Team</a></li>
+    </ul>
+</nav>
+    <hr>
+    <p id="team-list">
+        Team: {{ team.name }} <br>
+        League: {{ team.league.name }} <br>
+        Stadium: {{ team.stadium.name }} <br>
+        City: {{ team.stadium.city }} <br>
+        Relegated: {{ team.relegated }} <br>
+    </p>
+    <p><button class="edit-button"><a href="/index/teams/{{team.id}}/edit">Edit</a></button></p>
+
+
+ 
+
+
+
+
+
+
+{% endblock %}

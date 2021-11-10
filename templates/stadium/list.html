@@ -1,0 +1,32 @@
+{% extends "stadium/base.html" %}
+
+{% block content %}
+<nav>
+    <ul>
+        <li class="non-base-navs"><a href="/index/stadium/create">Create Stadium</a></li>
+    </ul>
+</nav>
+<div>
+    <hr>
+    {% for stadium in all_stadiums %}
+    <p id="country-list">
+        Stadium:   <a href="/index/stadium/{{stadium.id}}">{{stadium.name}}</a><br>
+        City : {{stadium.city}} <br>
+        Capacity : {{stadium.capacity}} <br>
+
+    </p>
+        <div>
+            <form action="/index/stadium/{{stadium.id}}/delete" method="POST"> 
+                <button class="trash-button">Delete</button> 
+              </form>
+        </div>
+
+    {% endfor %}
+</div>
+
+
+
+
+
+
+{% endblock %}

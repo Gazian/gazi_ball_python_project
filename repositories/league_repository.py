@@ -8,7 +8,7 @@ import repositories.stadium_repository as stadium_repository
 def select_all():
     leagues = []
 
-    sql = "SELECT * FROM leagues"
+    sql = "SELECT * FROM leagues ORDER BY league_name ASC"
     results = run_sql(sql)
 
     for row in results:
