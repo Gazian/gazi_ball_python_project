@@ -44,3 +44,41 @@ def create_match():
     match = Match(season,week,date,time,league,stadium,home,away)
     match_repository.save(match)
     return redirect('/index/matches')
+
+@matches_blueprint.route("/index/matches/<id>/delete", methods=['POST'])
+def delete_match(id):
+    match_repository.delete(id)
+    return redirect('/index/matches')
+
+@matches_blueprint.route("/index/teams/<id>", methods=['GET'])
+def show_match(id):
+    match = match_repository.select(id)
+    return render_template('teams/show.html',match=match)
+
+@matches_blueprint.route("/index/matches/<id>/edit", methods=['GET'])
+def edit_match(id):
+    match = match_repository.select(id)
+    teams = team_repository.select_all()
+    leagues = league_repository.select_all()
+    stadiums = stadium_repository.select_all()
+    return render_template('matches/edit.html', match=match, all_teams=teams, all_leagues=leagues,all_stadiums=stadiums)
+
+@matches_blueprint.route("/index/matches/<id>",methods = ['POST'])
+def update_match(id):
+    season = request.form['season']
+    week = request.form['week']
+    date = request.form['date']
+    time = request.form['time']
+    league_id = request.form['league_id']
+    stadium_id = request.form['stadium_id']
+    league = league_repository.select(league_id)
+    stadium = stadium_repository.select(stadium_id)
+    home_id =  request.form['home_id']
+    away_id =  request.form['away_id']
+    home = team_repository.select(home_id)
+    away = team_repository.select(away_id)
+    home_score = request.form['home_score']
+    away_score = request.form['away_score']
+    match = Match(season,week,date,time,league,stadium,home,away,home_score,away_score,id)
+    match_repository.update(match)
+    return redirect('/index/matches')

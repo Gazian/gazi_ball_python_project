@@ -1,0 +1,103 @@
+{% extends "matches/base.html" %}
+
+{% block content %}
+<nav>
+    <ul>
+        <li class="non-base-navs"><a href="/index/matches">Match List</a></li>
+    </ul>
+</nav>
+
+<form action="/index/matches" method="post">
+<h5>
+Please ensure Teams, League & Stadium are present prior to creating new Team
+</h5>
+
+
+  <div>
+    <label for="season">Season</label>
+    <input type="text" id="season" name="season" 
+    placeholder="{{match.season}}" required autofocus>
+  </div>
+
+  <div>
+    <label for="week">Week</label>
+    <input type="text" id="week" name="week" 
+    placeholder="{{match.week}}" required autofocus>
+  </div>
+
+  <div>
+    <label for="date">Date</label>
+    <input type="date" id="date" name="date" 
+    value="{{ match.date }}">
+  </div>
+
+  <div>
+    <label for="time">Time</label>
+    <input type="time" id="time" name="time" 
+    value="{{ match.time }}">
+  </div>
+
+  <div>
+    <label for="league">League</label>
+    <select id="league" name = "league_id">
+      {% for league in all_leagues %} 
+      <option value="{{ league.id }}"
+      {% if match.league.id==league.id %} selected="selected"{% endif %}>
+      {{ league.name }}
+      </option> 
+      {% endfor %} 
+    </select>
+  </div>
+
+  <div>
+   <label for="stadium">Stadium</label>
+    <select id="stadium" name = "stadium_id">
+      {% for stadium in all_stadiums %} 
+      <option value="{{ stadium.id }}"
+      {% if match.stadium.id==stadium.id %} selected="selected"{% endif %}>
+      {{ stadium.name }}
+    </option> 
+      {% endfor %} 
+    </select>
+  </div>
+
+  <div>
+    <label for="home">Home</label>
+     <select id="home" name = "home_id">
+       {% for team in all_teams %} 
+       <option value="{{ team.id }}"
+       {% if match.home.id==team.id %} selected="selected"{% endif %}>
+       {{ team.name }}
+    </option> 
+       {% endfor %} 
+     </select>
+   </div>
+
+   <div>
+    <label for="away">Away</label>
+     <select id="away" name = "away_id">
+       {% for team in all_teams %} 
+       <option value="{{ team.id }}"
+       {% if match.away.id==team.id %} selected="selected" {% endif %}>
+       {{ team.name }}
+    </option> 
+       {% endfor %} 
+     </select>
+   </div>
+
+   <div>
+    <label for="home_score">H</label>
+    <input type="number" id="home_score" name="home_score" 
+    placeholder="{{home_score}}" required autofocus>
+  </div>
+
+  <div>
+    <label for="away_score">A</label>
+    <input type="number" id="away_score" name="away_score" 
+    placeholder="{{away_score}}" required autofocus>
+  </div>
+
+  <button type="submit">Edit Match</button>
+</form>
+
+{% endblock %}

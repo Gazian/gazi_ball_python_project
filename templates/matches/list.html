@@ -18,6 +18,8 @@
                 <th>Away</th>
                 <th>H</th>
                 <th>A</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             {% for match in all_matches %}
             <tr>
@@ -29,8 +31,15 @@
                 <th>{{match.stadium.name}}</th>
                 <th>{{match.home.name}}</th>
                 <th>{{match.away.name}}</th>
-                <th></th>
-                <th></th>
+                <th>{{match.home_score}}</th>
+                <th>{{match.away_score}}</th>
+                <th><button class="edit-button">
+                    <a href="/index/matches/{{match.id}}/edit">Edit</a>
+                </button></th>
+                <th><form action="/index/matches/{{match.id}}/delete" method="POST"> 
+                    <button class="trash-button">Delete</button> 
+                  </form>
+                </th>
             </tr>
             {% endfor %}
         </table>

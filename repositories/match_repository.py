@@ -34,7 +34,7 @@ def select(id):
         league = league_repository.select(result['league_id'])
         home = team_repository.select(result['home_id'])
         away = team_repository.select(result['away_id'])
-        match = Match(result['season'],result['week'],result['date'],result['time'],league,stadium,home,away,result['home_score'],result['away_score'],result['id'])
+        match = Match(result['season'],result['match_week'],result['match_date'],result['match_time'],league,stadium,home,away,result['home_score'],result['away_score'],result['id'])
     return match
 
 def save(match):
@@ -43,3 +43,13 @@ def save(match):
     results = run_sql (sql,values)
     match.id = results[0]['id']
     return match
+
+def delete(id):
+    sql = "DELETE FROM matches WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
+def update(match):
+    sql = "UPDATE matches SET(season,match_week,match_date,match_time,league_id,stadium_id,home_id,away_id,home_score,away_score) = (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) where id = %s"
+    values = [match.season,match.week,match.date,match.time,match.league.id,match.stadium.id,match.home.id,match.away.id,match.home_score,match.away_score,match.id]
+    run_sql (sql,values)
