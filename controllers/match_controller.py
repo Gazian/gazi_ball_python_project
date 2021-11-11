@@ -77,8 +77,8 @@ def update_match(id):
     away_id =  request.form['away_id']
     home = team_repository.select(home_id)
     away = team_repository.select(away_id)
-    home_score = request.form['home_score']
-    away_score = request.form['away_score']
+    home_score = int(request.form['home_score'])
+    away_score = int(request.form['away_score'])
     match = Match(season,week,date,time,league,stadium,home,away,home_score,away_score,id)
     match_repository.update(match)
     return redirect('/index/matches')

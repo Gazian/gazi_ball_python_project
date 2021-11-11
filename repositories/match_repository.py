@@ -52,4 +52,4 @@ def delete(id):
 def update(match):
     sql = "UPDATE matches SET(season,match_week,match_date,match_time,league_id,stadium_id,home_id,away_id,home_score,away_score) = (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) where id = %s"
     values = [match.season,match.week,match.date,match.time,match.league.id,match.stadium.id,match.home.id,match.away.id,match.home_score,match.away_score,match.id]
-    run_sql (sql,values)
+    run_sql(sql,values)
