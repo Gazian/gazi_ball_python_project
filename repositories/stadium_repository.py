@@ -34,7 +34,7 @@ def save(stadium):
     stadium.id = results[0]['id']
     return stadium
 
-def delete_stadium(id):
+def delete(id):
     sql = "DELETE FROM stadiums WHERE id = %s"
     values = [id]
     run_sql(sql, values)

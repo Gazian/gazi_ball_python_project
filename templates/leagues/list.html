@@ -7,25 +7,21 @@
     </ul>
 </nav>
 <div>
-    <hr>
-    {% for league in all_leagues %}
-    <p>
-        <li class= "team-list">
+  <hr>
+  {% for league in all_leagues %}
+  <p>
+      <li class="team-list">
         League:   <a href="/index/leagues/{{league.id}}">{{league.name}}</a><br>
         Country : {{league.country}} <br>
-    </p>
-        <div>
-            <form action="/index/leagues/{{league.id}}/delete" method="POST"> 
-                <button class="trash-button">Delete</button> 
-              </form>
-        </div>
 
-    {% endfor %}
+  </p>
+      <div>
+          <form action="/index/leagues/{{league.id}}/delete" method="POST"> 
+              <button class="trash-button">Delete</button> 
+            </form>
+      </div>
+
+  {% endfor %}
 </div>
-
-
-
-
-
 
 {% endblock %}

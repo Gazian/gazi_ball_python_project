@@ -29,7 +29,7 @@ def create_stadium():
 
 @stadium_blueprint.route("/index/stadium/<id>/delete", methods=['POST'])
 def delete_stadium(id):
-    stadium_repository.delete_stadium(id)
+    stadium_repository.delete(id)
     return redirect('/index/stadium') 
 
 @stadium_blueprint.route("/index/stadium/<id>", methods=['GET'])

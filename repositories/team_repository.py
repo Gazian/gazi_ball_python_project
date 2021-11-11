@@ -1,7 +1,5 @@
 from db.run_sql import run_sql
-from models.stadium import Stadium
 from models.team import Team
-from models.league import League
 
 import repositories.stadium_repository as stadium_repository
 import repositories.league_repository as league_repository
@@ -47,18 +45,6 @@ def update(team):
     sql = "UPDATE teams SET(team_name,league_id,stadium_id,relegated) = (%s,%s,%s,%s) WHERE id = %s"
     values = [team.name, team.league.id,team.stadium.id,team.relegated,team.id]
     run_sql (sql,values)
-
-# def select(id):
-#     team = None
-#     sql = "SELECT * FROM teams WHERE id = %s"
-#     values = [id]
-#     result = run_sql(sql, values)[0]
-
-#     if result is not None:
-#         league = league_repository.select(result['league_id'])
-#         stadium = stadium_repository.select(result['stadium_id'])
-#         team = Team(result['team_name'],league,stadium,result['relegated'],result['id'])
-#     return team
 
 def select_all_teams_by_league(league):
     teams = []

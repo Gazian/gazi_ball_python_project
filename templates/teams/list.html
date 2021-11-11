@@ -13,13 +13,13 @@
             League: {{team.league.name}} <br>
             Stadium: {{ team.stadium.name}} <br>
             City: {{team.stadium.city}} <br>
-        </li>
+
     </p>
-    <div>
-        <form action="/index/teams/{{team.id}}/delete" method="POST"> 
-            <button class="trash-button">Delete</button> 
-          </form>
-    </div>
+        <div>
+            <form action="/index/teams/{{team.id}}/delete" method="POST"> 
+                <button class="trash-button">Delete</button> 
+            </form>
+        </div>
 
     {% endfor %}
 </div>

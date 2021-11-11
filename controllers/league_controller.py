@@ -11,7 +11,7 @@ leagues_blueprint = Blueprint("leagues", __name__)
 
 @leagues_blueprint.route("/index")
 def index():
-    leagues = league_repository.select_all()
+    league_repository.select_all()
     return render_template("/base.html")
 
 @leagues_blueprint.route("/index/leagues")
