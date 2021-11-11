@@ -14,9 +14,27 @@ Please ensure Teams, League & Stadium are present prior to creating new Team
 
 
   <div>
-    <label for="name">Team</label>
-    <input type="text" id="name" name="name" 
-    placeholder="{{team.name}}" required autofocus>
+    <label for="season">Season</label>
+    <input type="text" id="season" name="season" 
+    placeholder="{{season}}" required autofocus>
+  </div>
+
+  <div>
+    <label for="week">Week</label>
+    <input type="text" id="week" name="week" 
+    placeholder="{{week}}" required autofocus>
+  </div>
+
+  <div>
+    <label for="date">Date</label>
+    <input type="date" id="date" name="date" 
+    value="2021-11-11">
+  </div>
+
+  <div>
+    <label for="time">Time</label>
+    <input type="time" id="time" name="time" 
+    value="15:00">
   </div>
 
   <div>
@@ -36,7 +54,26 @@ Please ensure Teams, League & Stadium are present prior to creating new Team
       {% endfor %} 
     </select>
   </div>
-  <button type="submit">Add Team</button>
+
+  <div>
+    <label for="home">Home</label>
+     <select id="home" name = "home_id">
+       {% for team in all_teams %} 
+       <option value="{{ team.id }}">{{ team.name }}</option> 
+       {% endfor %} 
+     </select>
+   </div>
+
+   <div>
+    <label for="away">Away</label>
+     <select id="away" name = "away_id">
+       {% for team in all_teams %} 
+       <option value="{{ team.id }}">{{ team.name }}</option> 
+       {% endfor %} 
+     </select>
+   </div>
+
+  <button type="submit">Add Match</button>
 </form>
 
 {% endblock %}

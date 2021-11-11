@@ -22,3 +22,24 @@ def select_all():
         match = Match(row["season"],row["match_week"],row["match_date"],row["match_time"],league,stadium,home_team,away_team,row["home_score"],row["away_score"],row['id'])
         matches.append(match)
     return matches
+
+def select(id):
+    match = None
+    sql = "SELECT * FROM matches WHERE id = %s"
+    values = [id]
+    result = run_sql(sql,values)[0]
+
+    if result is not None:
+        stadium = stadium_repository.select(result['stadium_id'])
+        league = league_repository.select(result['league_id'])
+        home = team_repository.select(result['home_id'])
+        away = team_repository.select(result['away_id'])
+        match = Match(result['season'],result['week'],result['date'],result['time'],league,stadium,home,away,result['home_score'],result['away_score'],result['id'])
+    return match
+
+def save(match):
+    sql = "INSERT INTO matches(season,match_week,match_date,match_time,league_id,stadium_id,home_id,away_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s) RETURNING id"
+    values = [match.season,match.week,match.date,match.time,match.league.id,match.stadium.id,match.home.id,match.away.id]
+    results = run_sql (sql,values)
+    match.id = results[0]['id']
+    return match

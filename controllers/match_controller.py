@@ -24,5 +24,23 @@ def matches():
 def new_match():
     stadiums = stadium_repository.select_all()
     leagues = league_repository.select_all()
-    teams = team_repository.select_all
+    teams = team_repository.select_all()
     return render_template("/matches/create.html", all_stadiums=stadiums,all_leagues=leagues,all_teams=teams)
+
+@matches_blueprint.route("/index/matches",methods = ['POST'])
+def create_match():
+    season = request.form['season']
+    week = request.form['week']
+    date = request.form['date']
+    time = request.form['time']
+    league_id = request.form['league_id']
+    stadium_id = request.form['stadium_id']
+    league = league_repository.select(league_id)
+    stadium = stadium_repository.select(stadium_id)
+    home_id =  request.form['home_id']
+    away_id =  request.form['away_id']
+    home = team_repository.select(home_id)
+    away = team_repository.select(away_id)
+    match = Match(season,week,date,time,league,stadium,home,away)
+    match_repository.save(match)
+    return redirect('/index/matches')

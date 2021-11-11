@@ -1,6 +1,6 @@
 class Match:
 
-    def __init__(self,season,week,date,time,league,stadium,home,away,home_score,away_score,id = None):
+    def __init__(self,season,week,date,time,league,stadium,home,away,home_score = None,away_score = None,id = None):
         self.season = season
         self.week = week
         self.date = date
