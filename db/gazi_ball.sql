@@ -3,22 +3,27 @@ DROP TABLE IF EXISTS teams;
 DROP TABLE IF EXISTS leagues;
 DROP TABLE IF EXISTS stadiums;
 
+CREATE TABLE seasons (
+  id SERIAL PRIMARY KEY,
+  season VARCHAR(6 NOT NULL)
+)
+
 CREATE TABLE leagues (
   id SERIAL PRIMARY KEY,
-  league_name VARCHAR(255) NOT NULL,
-  country VARCHAR(255) NOT NULL
+  league_name VARCHAR(30) NOT NULL,
+  country VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE stadiums (
   id SERIAL PRIMARY KEY,
-  stadium_name VARCHAR(255) NOT NULL,
-  city VARCHAR(255) NOT NULL,
+  stadium_name VARCHAR(50) NOT NULL,
+  city VARCHAR(30) NOT NULL,
   capacity INT NOT NULL
 );
 
 CREATE TABLE teams (
   id SERIAL PRIMARY KEY,
-  team_name VARCHAR(255) NOT NULL,
+  team_name VARCHAR(25) NOT NULL,
   league_id INT NOT NULL REFERENCES leagues(id) ON DELETE CASCADE,
   stadium_id INT REFERENCES stadiums(id) ON DELETE CASCADE,
   relegated BOOLEAN DEFAULT False
@@ -26,7 +31,7 @@ CREATE TABLE teams (
 
 CREATE TABLE matches (
     id SERIAL PRIMARY KEY,
-    season VARCHAR(255),
+    season VARCHAR(6),
     match_week INT NOT NULL,
     match_date DATE NOT NULL,
     match_time TIME NOT NULL,
